@@ -1,10 +1,6 @@
-//https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+//https://leetcode.com/problems/minimum-depth-of-binary-tree/
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+
 
 class TreeNode {
 
@@ -18,34 +14,21 @@ class TreeNode {
 }
 
 class Solution {
-     public List<List<Integer>> levelOrderBottom(TreeNode root)  {
-         if(root==null){
-             return new ArrayList<>();
-         }
-        List<List<Integer>> list=new ArrayList<>();
-        Queue<TreeNode> queue=new LinkedList<>();
-        queue.add(root);
-        while(true){
-            int size=queue.size();
-            if(size==0){
-                break;
-            }
-            List<Integer>current=new ArrayList<>();
-            while(size>0){
-                TreeNode node=queue.poll();
-                current.add(node.val);
-                if(node.left!=null){
-                    queue.add(node.left);
-                }
-                if(node.right!=null){
-                    queue.add(node.right);
-                }
-                size--;
-            }
-
-            list.add(current);
+    int min=Integer.MAX_VALUE;
+    public int minDepth(TreeNode root) {
+        if(root==null) return 0;
+        traversal(root,0);
+        return  min;
+    }
+    int traversal(TreeNode node,int depth){
+        if(node==null) return 0;
+        depth++;
+        if(node.left==null && node.right==null){
+            min=Math.min(min, depth);
         }
-        Collections.reverse(list);
-        return list;
+        int left=traversal(node.left,depth);
+        int right=traversal(node.right,depth);
+        
+        return Math.min(left, right)+1;
     }
 }
