@@ -1,20 +1,16 @@
 //https://leetcode.com/problems/counting-bits/
 
 class Solution {
-    public int[] countBits(int num) {
+public int[] countBits(int num) { 
         int[]result=new int[num+1];
-        for(int i=0;i<=num;i++){
-            result[i]=countBit(i);
+        result[0]=0;
+        int nextPower=1;
+        for(int i=1;i<=num;i++){
+            if(i==nextPower){
+                nextPower*=2;
+            }
+            result[i]=result[i-nextPower/2]+1;
         }
         return result;
-    }
-    
-    int countBit(int num){
-        int count=0;
-        while(num>0){
-            count+=num%2;
-            num/=2;
-        }
-        return count;
     }
 }
