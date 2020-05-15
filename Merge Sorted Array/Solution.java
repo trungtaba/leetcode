@@ -6,7 +6,6 @@ class Solution {
         int index=0;
         int index1=0;
         int index2=0;
-        
         while(index1<m && index2<n){
             if(nums1[index1]<nums2[index2]){
                 result[index++]=nums1[index1++];
@@ -14,15 +13,15 @@ class Solution {
                 result[index++]=nums2[index2++];
             }
         }
-        
+
         while(index1<m){
             result[index++]=nums1[index1++];
         }
-        
+
         while(index2<n){
             result[index++]=nums2[index2++];
         }
-        
+
         for(int i=0;i<m+n;i++){
             nums1[i]=result[i];
         }
