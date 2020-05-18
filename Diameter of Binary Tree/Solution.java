@@ -12,21 +12,20 @@ class TreeNode {
 }
 
 class Solution {
-int diameter=0;
+    int diameter = 0;
+
     public int diameterOfBinaryTree(TreeNode root) {
         order(root);
         return diameter;
     }
-    int order(TreeNode node){
-        if(node==null)return 0;
-        int left=order(node.left);
-        
-        int right=order(node.right);
-        diameter=Math.max(diameter, left+right);
-        return Math.max(left, right)+1;
+
+    int order(TreeNode node) {
+        if (node == null)
+            return 0;
+        int left = order(node.left);
+
+        int right = order(node.right);
+        diameter = Math.max(diameter, left + right);
+        return Math.max(left, right) + 1;
     }
 }
-
-
-
-
