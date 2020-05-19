@@ -17,8 +17,7 @@ class Solution {
             result.add(currenString);
             return;
         }
-        // System.out.println(nums[currentLevel]);
-        // System.out.println(chars[nums[currentLevel]]);
+
         for(int i=0;i< chars[nums[currentLevel]].length();i++){
             helper(nums, currenString+chars[nums[currentLevel]].charAt(i), currentLevel+1);
         }
